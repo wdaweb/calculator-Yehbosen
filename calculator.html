@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        td:not(#input) {
+            cursor: pointer;
+        }
+        .tr1 {
+            background: #dfe1e5;
+            color: #202124;
+            border: 100px solid #dfe1e5;
+            
+            
+        }
+        .tr1 td {
+            width: 100px;
+            height: 50px;
+            border-radius: 10px;
+            
+            
+        }
+        .tr2 {
+            background: #f1f3f4;
+            color: #202124;
+            border: 100px solid #f1f3f4;
+            border-radius: 4px;
+        }
+        .tr2 td {
+            width: 100px;
+            height: 50px;
+            border-radius: 10px;
+        }
+        .tr3 {
+            background: #f1f3f4;
+            color: #202124;
+            border: 1px solid #f1f3f4;
+            border-radius: 4px;
+        }
+        .tr3 td {
+            width: 100px;
+            height: 50px;
+            border-radius: 10px;
+        }
+        .tr4 {
+            background: #f1f3f4;
+            color: #202124;
+            border: 1px solid #f1f3f4;
+            border-radius: 4px;
+        }
+        .tr4 td {
+            width: 100px;
+            height: 50px;
+            border-radius: 10px;
+        }
+        .tr4 .td4 {
+            background: #4285f4;
+            color: #fff;
+            border: 1px solid #4285f4;
+            border-radius: 4px;
+            
+        }
+        .tr5 {
+            background: #f1f3f4;
+            color: #202124;
+            border: 1px solid #f1f3f4;
+            border-radius: 4px;
+        }
+        .tr5 td {
+            width: 100px;
+            height: 50px;
+            border-radius: 10px;
+        }
+        .tab {
+            -webkit-user-select: none;
+            position: relative;
+            font-size: 40px;
+            margin:0px auto;
+        }
+        .space {
+            width: 98.5%;
+            height: 72px;
+            border: 1px solid #ebebeb;
+            border-radius: 8px;
+            margin: auto;
+            padding: 10px 14px 0px 10px;
+            box-sizing: border-box;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="tab">
+    <table>
+        <tr class="space">
+            <td colspan="4" id="input"><div>
+
+            </div>
+
+            </td>
+        </tr>
+        <tr class="tr1">
+            <td><div styl>C</div></td>
+            <td><div styl>/</div></td>
+            <td><div styl>*</div></td>
+            <td><div styl>-</div></td>
+        </tr>
+        <tr class="tr2">
+            <td><div>7</div></td>
+            <td><div>8</div></td>
+            <td><div>9</div></td>
+            <td rowspan="2"><div>+</div></td>
+        </tr>
+        <tr class="tr3">
+            <td><div>4</div></td>
+            <td><div>5</div></td>
+            <td><div>6</div></td>
+        </tr>
+        <tr class="tr4">
+            <td><div>1</div></td>
+            <td><div>2</div></td>
+            <td><div>3</div></td>
+            <td rowspan="2" class="td4"><div>=</div></td>
+        </tr>
+        <tr class="tr5">
+            <td colspan="2"><div>0</div></td>
+            <td><div>.</div></td>
+        </tr>
+    </table>
+    </div>
+    <script>
+        let input = document.getElementById("input");
+        let td = document.getElementsByTagName("td");
+        let operator = ["+", "-", "*", "/", "Enter", "."];
+
+        for(let i=0;i<td.length;i++){
+            if(td[i].id != "input") {
+                td[i].onclick = () => {
+                    addNumber(td[i].innerText);
+                }
+            }
+        }
+
+        document.onkeydown = (event) => {
+            let key = event.key;
+            if(!isNaN(key) || operator.includes(key)) {
+                addNumber(key);
+            }
+        }
+
+        let addNumber = (number) => {
+            if(number == "C"){
+                input.innerText = "0";
+            }
+            else if(number == "=" || number == "Enter"){
+                input.innerText = eval(input.innerText);
+            }
+            else {
+                if(input.innerText == "0") {
+                    input.innerText = number;
+                }
+                else {
+                    input.innerText += number;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
